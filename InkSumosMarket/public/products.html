@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InkSumos Market</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/theme.css">
+        <link rel="stylesheet" href="./css/layout.css">
+        <link rel="stylesheet" href="./css/product.css">
+        <link rel="icon" href="./favicon1.jpg" id="pageIcon" type="image/png">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="contenedor container-fluid gap-3">
+                    <!-- Logo -->
+                    <div class="contenedor-logo">
+                        <button class="navbar-brand btn p-0" onclick="backToHome()">
+                            <img src="./favicon1.jpg" alt="InkSumos Market" id="logoImage">
+                        </button>
+                        <div class="texto-logo">
+                            <span class="titulo-app">
+                                InkSumos Market
+                            </span>
+                            <span class="subtitulo-app">
+                                Insumos de calidad para su impresora y repuestos de confianza.
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Menu Hamburguesa -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- Menú -->
+                    <div class="collapse navbar-collapse" id="menuNav">
+                        <ul class="menu navbar-nav ms-auto">
+                            <!-- Categorías dropdown -->
+                            <li class="nav-item dropdown">
+                                <button class="nav-link dropdown-toggle btn" id="btnMenu" data-bs-toggle="dropdown">
+                                    Categorías
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" id="btnInsumos" data-categoria="insumos">
+                                            Insumos
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" id="btnRepuestos" data-categoria="repuestos">
+                                            Repuestos
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link linkShoppingCart" href="./shoppingCart.html">
+                                    Carrito
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link linkLogin" href="./auth/login">
+                                    Login Admin
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <button id="themeBtn" class="theme-btn">☀️</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="container my-5">
+            <section class="category-section mb-5">
+                <h2 class="text-center mb-4">Seleccione una categoría y conozca nuestros productos</h2>
+                <div id="productsCategory" class="row justify-content-center g-4">
+                    <div class="col-md-4">
+                        <div class="card category-card h-100 text-center"
+                            data-categoria="insumos">
+                            <div class="card-body">
+                                <h3 class="card-title text-info">
+                                    Insumos
+                                </h3>
+                                <p class="card-text">
+                                    Insumos de calidad para su impresora y repuestos de confianza.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card category-card h-100 text-center"
+                            data-categoria="repuestos">
+                            <div class="card-body">
+                                <h3 class="card-title text-warning">
+                                    Repuestos
+                                </h3>
+                                <p class="card-text">
+                                    Repuestos de calidad para su impresora y repuestos de confianza.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="category-section mb-5 contentHidden">
+                <h2 class="mb-4 text-info">Insumos</h2>
+                <div id="contenedorInsumos"></div> 
+                <div id="paginacionInsumos" class="mt-3"></div>
+            </section>
+            <section class="category-section mb-5 contentHidden">
+                <h2 class="mb-4 text-warning">Repuestos</h2>
+                <div id="contenedorRepuestos"></div>
+                <div id="paginacionRepuestos" class="mt-3"></div>
+            </section>
+        </main>
+        <footer>
+			<small>
+				TP -> Tilcara, Juan Alberto - De Marco, Matias
+			</small>
+		</footer>
+        <script src="./js/products.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>   
+        <script src="./js/theme.js"></script>
+    </body>
+</html>

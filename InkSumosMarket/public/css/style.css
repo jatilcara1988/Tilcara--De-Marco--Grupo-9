@@ -1,0 +1,99 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color:var(--bg-body);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color:var(--text-light);
+}
+
+header {
+    width: 100%;
+	background-color:var(--bg-navbar);
+	color:var(--text-primary);
+}
+
+.navbar {
+    background-color: var(--bg-navbar) !important;
+    color: var(--text-primary);
+}
+
+main {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card{
+	width: 100%;
+	max-width: 450px;
+	display: flex;
+	justify-content: center;
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card-body{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	background-color:var(--bg-card);
+	color:var(--text-primary);
+}
+
+input,
+button{
+	width: 80%;
+	max-width: 350px;
+	text-align: center;
+	margin: 5px;
+}
+
+p{
+	color:var(--text-primary);
+}
+
+footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color:var(--bg-navbar);
+	color:var(--text-primary);
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer small {
+	margin-right: auto;
+}
+
+#noticeMessage {
+	color:  rgb(235, 75, 75);
+}
+
+@media (max-width: 480px){
+	.card{
+		padding: 15px;
+	}
+	h1{
+		font-size: 1.5rem;
+	}
+	input,
+	button{
+		font-size: 16px;
+	}
+}

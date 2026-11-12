@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InkSumos Market</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/theme.css">
+        <link rel="stylesheet" href="./css/layout.css">
+        <link rel="stylesheet" href="./css/shopping_cart.css">
+        <link rel="icon" href="./favicon1.jpg" id="pageIcon" type="image/png">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="contenedor container-fluid gap-3">
+                    <!-- Logo -->
+                    <div class="contenedor-logo">
+                        <button id="btnLogo" class="navbar-brand btn p-0" onclick="backToHome()">
+                            <img src="./favicon1.jpg" alt="InkSumos Market" id="logoImage">
+                        </button>
+                        <div class="texto-logo">
+                            <span class="titulo-app">
+                                InkSumos Market
+                            </span>
+                            <span class="subtitulo-app">
+                                Insumos de calidad para su impresora y repuestos de confianza.
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Botón hamburguesa -->
+                    <button class="navbar-toggler"type="button"data-bs-toggle="collapse"data-bs-target="#menuNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- Menú -->
+                    <div class="collapse navbar-collapse" id="menuNav">
+                        <ul class="menu navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link linkProductos" href="./products.html">
+                                    Productos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link linkLogin"href="./auth/login">
+                                    Login Admin
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <button id="themeBtn" class="tema-btn nav-link btn">
+                                    <span id="themeText">
+                                        Tema
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+		<main  class="my-5">
+            <section class="section-shopping-cart">
+                <div id="container-shopping-cart">
+                </div>
+                <div id="total-carrito" class="text-end mt-4">
+                </div>
+            </section>
+            <section>
+                <div id="modal-confirmation" class="modal-hidden">
+                    <div class="modal-content-custom">
+                        <h4>Confirmar compra</h4>
+                        <p>¿Desea confirmar la compra?</p>
+                        <div class="mb-3">
+                            <label for="nombre-cliente" class="form-label">Nombre del cliente</label>
+                            <input type="text" id="nombre-cliente" class="form-control" placeholder="Ej: Juan Perez" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="medio-pago" class="form-label">Medio de pago</label>
+                            <select id="medio-pago" class="form-select">
+                                <option value="">Seleccionar...</option>
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="Tarjeta">Tarjeta</option>
+                                <option value="Transferencia">Transferencia</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary" onclick="cancelPurchase()">
+                                Cancelar
+                            </button>
+                            <button class="btn btn-success" onclick="confirmPurchase()">
+                                Confirmar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+			<small>
+				TP -> Tilcara, Juan Alberto - De Marco, Matias
+			</small>
+		</footer>
+        <script src="./js/shoppingCart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="./js/theme.js"></script>
+	</body>
+</html>

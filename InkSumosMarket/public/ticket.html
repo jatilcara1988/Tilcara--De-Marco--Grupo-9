@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket</title>
+    <link rel="stylesheet" href="./css/ticket.css" />
+    <link rel="icon" href="./favicon1.jpg" id="pageIcon" type="image/png">
+  </head>
+  <body>
+    <h1>Ticket de la compra</h1>
+    <p>Número de ticket: <span id="idTicket">----</span></p>
+    <p>Fecha de compra: <span id="purchaseDate">----</span></p>
+    <p>Cliente: <span id="clientName">----</span></p>
+    <p>Medio de pago seleccionado: <span id="paymentMethod">----</span></p>
+    <p><strong>Total de la compra: <span id="totalAmount">----</span></strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="productsTable"></tbody>
+    </table>
+    <div class="actions">
+      <a id="descargarLink" class="hidden" href="#" download>Descargar Ticket</a>
+      <button id="btnLogo" onclick="backToHome()"> Inicio</button>
+    </div>
+    <script src="./js/ticket.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+body {
+	font-family: Arial, sans-serif;
+	max-width: 800px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1rem;
+}
+
+th,
+td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background: #f5f5f5;
+}
+
+.actions {
+	margin-top: 1rem;
+}
+
+#btnLogo,
+#descargarLink {
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #264768;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+.hidden {
+	display: none;
+}

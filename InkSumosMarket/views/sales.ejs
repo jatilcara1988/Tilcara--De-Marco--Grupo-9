@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InkSumos Market</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/theme.css">
+        <link rel="stylesheet" href="/css/sales.css">
+        <link rel="icon" href="/favicon1.jpg" type="image/png" id="pageIcon">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="contenedor container-fluid gap-3">
+                    <div class="contenedor-logo">
+                        <button class="navbar-brand btn p-0" onclick="backToHome()">
+                            <img src="/favicon1.jpg" alt="InkSumos Market" class="img-fluid" id="logoImage" style="max-width: 90px;">
+                        </button>
+                        <div class="texto-logo">
+                            <span class="titulo-app">InkSumos Market</span>
+                            <span class="subtitulo-app">Insumos de calidad para su impresora y repuestos de confianza.</span>
+                        </div>
+                    </div>
+                    <!-- hamburguesa -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- menú -->
+                    <div class="collapse navbar-collapse" id="menuNav">
+                        <ul class="menu navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/dashboard">Panel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"href="/admin/productos/crear">+ Nuevo</a>
+                            </li>
+                            <li class="nav-item">
+                                <button id="themeBtn" class="tema-btn btn p-0">
+                                    <span id="themeText">Tema</span>
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/logout">Salir</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="container my-5">
+            <div class="container mt-4">
+                <h1 class="text-center mb-4">Listado de Ventas</h1>
+                <% if(ventasFormateadas.length === 0){ %>
+                    <div class="text-muted text-center col-12">
+                        No hay ventas registradas
+                    </div>
+                <% } else { %>
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <label class="form-label">Desde</label>
+                            <input type="date" id="fechaDesde" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Hasta</label>
+                            <input type="date" id="fechaHasta" class="form-control">
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button id="limpiarFiltro" class="btn btn-secondary">
+                                Limpiar filtros
+                            </button>
+                        </div>
+                    </div>
+                    <!-- TABLA -->
+                    <div class="table-responsive">
+                        <table id="tablaventas" class="table table-striped table-hover align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="col-id">ID</th>
+                                    <th id="clientes" style="cursor:pointer;">Cliente</th>
+                                    <th>Productos</th>
+                                    <th id="ordenTotal" style="cursor:pointer;">Total</th>
+                                    <th id="medio" style="cursor: pointer;">Medio de pago</th>
+                                    <th id="fecha"  style="cursor:pointer">Fecha
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <% ventasFormateadas.forEach(venta => { %>
+                                    <tr>
+                                        <td class="col-id">
+                                            <%= venta.id %>
+                                        </td>
+                                        <td class="col-cliente" data-cliente="<%= venta.nombre_cliente %>">
+                                            <%= venta.nombre_cliente %>
+                                        </td>
+                                        <td class="col-producto">
+                                            <% if (venta.productos && venta.productos.length > 0) { %>
+                                                <ul class="lista-productos mb-0 ps-3">
+                                                    <% venta.productos.forEach(p => { %>
+                                                        <li><%= p %></li>
+                                                    <% }) %>
+                                                </ul>
+                                            <% } else { %>
+                                                <span class="text-muted">Sin productos</span>
+                                            <% } %>
+                                        </td>
+                                        <td class="col-total" data-total="<%= venta.total %>">
+                                            $<%= Number(venta.total).toLocaleString('es-AR') %>
+                                        </td>
+                                        <td class="col-medio" data-medio="<%= venta.medio %>">
+                                            <%= venta.medio %>
+                                        </td>
+                                        <td class="col-fecha" data-fecha="<%= venta.fecha || '' %>">
+                                            <%= venta.fecha ? new Date(venta.fecha).toLocaleDateString('es-AR') : 'Sin fecha' %>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } %>
+            </div>
+        </main>
+        <footer>
+			<small>
+				TP -> Tilcara, Juan Alberto - De Marco, Matias
+			</small>
+		</footer>
+        <script src="/js/sales.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>   
+        <script src="/js/theme.js"></script>
+    </body>
+</html>

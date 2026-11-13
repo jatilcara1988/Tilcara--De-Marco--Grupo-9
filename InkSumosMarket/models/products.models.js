@@ -16,7 +16,7 @@ const products = db.define("products",{
     isActive: {type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true},
     categoryId: {type: DataTypes.BIGINT.UNSIGNED, allowNull: false},
     createdAt: {type: DataTypes.DATE, allowNull: false},
-    updatedAt: {type: DataTypes.DATE,allowNull: false}
+    updatedAt: {type: DataTypes.DATE,allowNull: true}
 });
 
 module.exports = products;

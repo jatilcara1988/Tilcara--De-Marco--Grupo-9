@@ -36,6 +36,7 @@ const productController = {
     },
     updateProduct: async (req, res) => {
         try {
+            console.log(`Intentando actualizar ${req.productoNormalizado}`);
             const id = Number(req.params.id);
             if (!Number.isInteger(id) || id <= 0) {
                 return res.status(400).send("ID inválido");
@@ -46,11 +47,13 @@ const productController = {
             }
             const data = req.productoNormalizado; 
             await product.update({
-                nombre: data.nombre,
-                descripcion: data.descripcion,
-                precio: data.precio,
+                productName: data.nombre,
+                productDescription: data.descripcion,
+                price: data.precio,
                 stock: data.stock,
-                imagen: data.imagen
+                productImage: data.imagen,
+                categoryId: data.categoria_id,
+                updateAt: new Date()
             });
             return res.redirect("/admin/dashboard");
         } catch (error) {
@@ -60,9 +63,16 @@ const productController = {
     },
     createProduct: async (req, res) => {
         try {
-            const productNuevo = await products.create(
-                req.productoNormalizado
-            );
+            const data = req.productoNormalizado; 
+            const productNuevo = await products.create({
+                productName: data.nombre,
+                productDescription: data.descripcion,
+                price: data.precio,
+                stock: data.stock,
+                productImage: data.imagen,
+                categoryId: data.categoria_id,
+                createdAt: new Date()
+            });
             return res.redirect("/admin/dashboard");
         } catch (error) {
             console.error(error);

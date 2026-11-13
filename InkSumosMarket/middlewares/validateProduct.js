@@ -6,7 +6,7 @@ function validateProduct(req, res, next) {
         precio: Number(req.body.precio),
         stock: Number(req.body.stock),
         imagen: req.file
-            ? `/images/productos/${req.file.filename}`
+            ? `/images/products/${req.file.filename}`
             : req.body.imagenActual?.trim() || "",
         categoria_id: Number(req.body.categoria_id)
     };
@@ -42,6 +42,14 @@ function validateProduct(req, res, next) {
         errores.push("Categoría inválida");
     }
     if (errores.length > 0) {
+        console.log(`Total de errores detectados: ${errores.length}`);
+        // Si Multer subió un archivo pero la validación falló, lo borramos del disco ---
+        if (req.file && req.file.path) {
+            fs.unlink(req.file.path, (err) => {
+                if (err) console.error("Error al eliminar archivo temporal huérfano:", err);
+            });
+        }
+
         return res.status(400).render("form", {
             producto: {
                 id: req.params.id,

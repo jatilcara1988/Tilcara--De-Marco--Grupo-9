@@ -227,4 +227,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         guardarCarrito(carrito);
         renderizarCarrito(carrito);
     });
+
+/* Volever a la direccion de productos */
+const btnVolverProductos = document.getElementById('btn-volver2');
+
+if (btnVolverProductos) {
+    btnVolverProductos.addEventListener('click', function() {
+        
+        window.location.href = '/products.html';
+        
+    });
+}
+
+
 });

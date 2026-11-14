@@ -114,6 +114,8 @@ function renderizarSeccion(categoria) {
     renderizarBotoneraSeccion(categoria, productosFiltrados.length, contenedorPag);
 }
 
+
+
 // 4. Generador dinámico de botones numéricos
 function renderizarBotoneraSeccion(categoria, totalItems, contenedorPag) {
     const config = estadoPaginacion[categoria];
@@ -214,4 +216,68 @@ document.addEventListener("DOMContentLoaded", async () => {
         let categoria = elemento.dataset.categoria;
         renderizarSeccion(categoria);
     });
+
+
+
+// Se manejan Clicks en categorias
+
+    document.addEventListener("click", (e) => {
+    const elemento = e.target.closest("[data-categoria]");
+    if(!elemento) return;
+    
+    // Mostramos el botón de volver cuando entra a la categoría
+    const botonVolver = document.getElementById('btn-volver');
+    if (botonVolver) {
+        botonVolver.style.display = 'block'; // Lo hace visible
+    }
+    // Oculta todas las secciones de la página (incluido el menú principal)
+    // para dejar la pantalla limpia antes de cargar los productos
+    document.querySelectorAll(".category-section").forEach(seccion => {
+        seccion.classList.add("contentHidden");
+    });
+    //Se dibujan los elementos de categoria 
+    let categoria = elemento.dataset.categoria;
+    renderizarSeccion(categoria);
+});
+
+
+
+// Btn volver dentro de repuestos e insumos, mostrar como estaba original
+
+
+const botonVolver = document.getElementById('btn-volver');
+
+if (botonVolver) {
+    botonVolver.style.display = 'none'; 
+
+    botonVolver.addEventListener('click', function() {
+        // 1. Ocultar el botón "Volver"
+        botonVolver.style.display = 'none';
+
+        // 2. Ocultar TODAS las secciones de un solo golpe (igual que en el bloque 1)
+        document.querySelectorAll(".category-section").forEach(seccion => {
+            seccion.classList.add("contentHidden");
+        });
+
+        // 3. Volver a mostrar SOLO el menú principal
+        const menuPrincipal = document.getElementById('menu-principal');
+        if (menuPrincipal) {
+            menuPrincipal.classList.remove("contentHidden");
+        }
+
+        // 4. Limpiar todos los contenedores usando un array (chau a las líneas repetidas)
+        const elementosALimpiar = [
+            'contenedorInsumos', 
+            'contenedorRepuestos', 
+            'paginacionInsumos', 
+            'paginacionRepuestos'
+        ];
+        
+        elementosALimpiar.forEach(id => {
+            const elemento = document.getElementById(id);
+            if (elemento) elemento.innerHTML = ''; 
+        });
+    });
+}
+
 });

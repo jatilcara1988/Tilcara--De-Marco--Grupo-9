@@ -146,3 +146,31 @@ footer small {
 		justify-content: center;
 	}
 }
+
+/* /* Cambia el color del texto atenuado en general */
+p.text-muted {
+ color: rgb(54, 48, 48);
+ font-weight: bold;
+}
+
+
+
+#btn-volver {
+	display: none;
+    background: none;       /* Le saca el fondo de botón */
+    border: none;           /* saca el borde cuadrado */
+    color: #007BFF;         /*  color azul de enlace */
+    font-size: 16px;        
+    text-decoration: underline; 
+    cursor: pointer;        /*   la manito */
+    padding: 0;
+	
+}
+
+/* oscurecer al pasar cursor */
+#btn-volver:hover{
+
+color: rgb(21, 6, 83);
+	
+
+}

@@ -35,6 +35,7 @@ body.dark{
 	--hover-color:#69E9B4;
 
 	--shadow:0 5px 15px rgba(0,0,0,.35);
+	
 }
 
 .theme-btn{
@@ -62,4 +63,10 @@ body.dark{
 
 .page-form {
 	--text-primary: whitesmoke;
+}
+
+/* Forzar un color claro para cuando no hay productos en modo oscuro */
+body.dark p.text-muted, 
+body.dark .sin-productos {
+    color: #a0aec0 !important; /* Un gris claro/blanco suave que se lee perfecto */
 }

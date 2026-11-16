@@ -26,6 +26,15 @@ window.backToHome = () => {
     window.location.href = "./index.html";
 };
 
+// window.goToProducts = () =>{
+    
+//     window.location.href = "/products.html"
+
+
+// };
+
+
+
 const cargarTicket = async () => {
     try {
         const query = ids ? `?ids=${encodeURIComponent(ids)}` : "";
@@ -38,6 +47,7 @@ const cargarTicket = async () => {
         document.getElementById("idTicket").textContent = ticket.idticket;
         document.getElementById("purchaseDate").textContent = formatoFecha(ticket.fechaCompra);
         document.getElementById("clientName").textContent = ticket.cliente || "No disponible";
+        document.getElementById("empresaName").textContent = "InkSumosMarket"; 
         document.getElementById("paymentMethod").textContent = ticket.medioPago || "No disponible";
         let totalRender = Number(ticket.totalCompra) || 0;
         const tbody = document.getElementById("productsTable");

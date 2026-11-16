@@ -175,6 +175,12 @@ window.confirmPurchase = async () => {
     if (nombreCliente) {
         sessionStorage.setItem("cliente", nombreCliente);
     }
+    
+    if (medioPagoSelect.value === "") {
+        alert("Por favor, selecciona un medio de pago para poder comprar.")
+            return
+    }
+
     try {
         const respuesta = await fetch("/ticket/checkout", {
             method: "POST",
@@ -227,4 +233,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         guardarCarrito(carrito);
         renderizarCarrito(carrito);
     });
+
+/* Volever a la direccion de productos */
+const btnVolverProductos = document.getElementById('btn-volver2');
+
+if (btnVolverProductos) {
+    btnVolverProductos.addEventListener('click', function() {
+        
+        window.location.href = '/products.html';
+        
+    });
+}
+
+
 });

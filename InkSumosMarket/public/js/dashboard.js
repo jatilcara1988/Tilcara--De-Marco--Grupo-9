@@ -62,4 +62,14 @@ document.addEventListener("click", (e) => {
     }).catch((error) => {
         alert(error.message || "Error al reactivar el producto");
     });
+
+    
+
+
+
+
+
+
+
+
 });

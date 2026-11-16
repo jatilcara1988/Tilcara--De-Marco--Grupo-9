@@ -21,5 +21,6 @@ router.post("/productos/editar/:id", uploadProductImage, validateProduct, produc
 router.post("/productos/eliminar/:id", productController.deleteProduct);
 router.post("/productos/reactivar/:id", productController.reactivateProduct);
 router.post("/productos/crear", uploadProductImage, validateProduct, productController.createProduct);
+router.get("/api/ventas", salesController.findAllSalesJSON);
 
 module.exports = router;

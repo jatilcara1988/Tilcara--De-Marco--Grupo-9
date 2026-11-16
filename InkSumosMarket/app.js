@@ -1,6 +1,3 @@
-// Inciando configuracion
-//require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -79,9 +76,9 @@ const shutdown = async (signal) => {
     }
 }
 
-// Eventos del proceso
-process.on("SIGINT", () => shutdown("SIGINT"))
-process.on("SIGTERM", () => shutdown("SIGTERM"))
+// Eventos del proceso, espera de procesos para luego terminar de apagarse
+process.on("SIGINT", () => shutdown("SIGINT")) //cuando se coloca ctrl+c
+process.on("SIGTERM", () => shutdown("SIGTERM")) //cuando un servidor pide apagar la app
 
 //Inicio
 startServer();

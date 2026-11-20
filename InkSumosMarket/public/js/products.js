@@ -38,10 +38,13 @@ function renderizarSeccion(categoria) {
 
     const contenedor = document.getElementById(idContenedor);
     const contenedorPag = document.getElementById(idPaginacion);
+    const contenedorReset = document.getElementById("contenedorResetProductos");
+    contenedorReset.closest("section").classList.remove("contentHidden");
 
     //Muestro solo la seccion actual
     const seccion = contenedor.closest("section");
     seccion.classList.remove("contentHidden");
+
 
     if (!contenedor || !contenedorPag) return;
 
@@ -112,27 +115,24 @@ function renderizarSeccion(categoria) {
     });
     // 4. BOTONERA: Dibujar la paginación de esta sección
     renderizarBotoneraSeccion(categoria, productosFiltrados.length, contenedorPag);
-}
-
-
+};
 
 // 4. Generador dinámico de botones numéricos
 function renderizarBotoneraSeccion(categoria, totalItems, contenedorPag) {
     const config = estadoPaginacion[categoria];
     const totalPaginas = Math.ceil(totalItems / config.productosPorPagina);
+
     contenedorPag.innerHTML = "";
 
     if (totalPaginas <= 1) return;
 
     let navHTML = `<nav><ul class="pagination pagination-sm justify-content-center mt-5">`;
-
     // Anterior
     navHTML += `
         <li class="page-item ${config.paginaActual === 1 ? 'disabled' : ''}">
             <button class="page-link" onclick="cambiarPaginaSeccion('${categoria}', ${config.paginaActual - 1})">Anterior</button>
         </li>
     `;
-
     // Números
     for (let i = 1; i <= totalPaginas; i++) {
         navHTML += `
@@ -141,17 +141,15 @@ function renderizarBotoneraSeccion(categoria, totalItems, contenedorPag) {
             </li>
         `;
     }
-
     // Siguiente
     navHTML += `
         <li class="page-item ${config.paginaActual === totalPaginas ? 'disabled' : ''} ">
             <button class="page-link" onclick="cambiarPaginaSeccion('${categoria}', ${config.paginaActual + 1})">Siguiente</button>
         </li>
     `;
-
     navHTML += `</ul></nav>`;
     contenedorPag.innerHTML = navHTML;
-}
+};
 
 // 5. Controladores de eventos expuestos a 'window' para los onclick inline
 window.cambiarPaginaSeccion = function(categoria, nuevaPagina) {
@@ -182,7 +180,11 @@ window.dropFromCart = function(idProducto, categoria) {
 window.backToHome = () => {
     sessionStorage.clear();
     window.location.href = "./index.html";
-}
+};
+
+window.resetProductPage = () => {
+    window.location.href = "products.html";
+};
 
 // 6. Listener de arranque DOMContentLoaded (Tu lógica de inicio preservada)
 document.addEventListener("DOMContentLoaded", async () => {
@@ -206,10 +208,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const elemento = e.target.closest("[data-categoria]");
         if(!elemento) return;
         console.log(`Se ha hecho click en la categoría: ${elemento.dataset.categoria}`);
-
         // Ocultar todas las secciones antes de renderizar nuevamente
         document.querySelectorAll(".category-section").forEach(seccion => {
-            console.log(`Ocultando sección: ${seccion.querySelector("h2").textContent}`);
+            console.log(`Ocultando sección: ${seccion.querySelector("h2") 
+                ? seccion.querySelector("h2").textContent 
+                    : "Seccion de botonera de Reset"}`);
             seccion.classList.add("contentHidden");
         });
         //Mostramos la categoria seleccionada
@@ -217,67 +220,59 @@ document.addEventListener("DOMContentLoaded", async () => {
         renderizarSeccion(categoria);
     });
 
-
-
-// Se manejan Clicks en categorias
-
+    // Se manejan Clicks en categorias
     document.addEventListener("click", (e) => {
-    const elemento = e.target.closest("[data-categoria]");
-    if(!elemento) return;
+        const elemento = e.target.closest("[data-categoria]");
+        if(!elemento) return;
     
-    // Mostramos el botón de volver cuando entra a la categoría
-    const botonVolver = document.getElementById('btn-volver');
-    if (botonVolver) {
-        botonVolver.style.display = 'block'; // Lo hace visible
-    }
-    // Oculta todas las secciones de la página (incluido el menú principal)
-    // para dejar la pantalla limpia antes de cargar los productos
-    document.querySelectorAll(".category-section").forEach(seccion => {
-        seccion.classList.add("contentHidden");
-    });
-    //Se dibujan los elementos de categoria 
-    let categoria = elemento.dataset.categoria;
-    renderizarSeccion(categoria);
-});
-
-
-
-// Btn volver dentro de repuestos e insumos, mostrar como estaba original
-
-
-const botonVolver = document.getElementById('btn-volver');
-
-if (botonVolver) {
-    botonVolver.style.display = 'none'; 
-
-    botonVolver.addEventListener('click', function() {
-        // 1. Ocultar el botón "Volver"
-        botonVolver.style.display = 'none';
-
-        // 2. Ocultar TODAS las secciones de un solo golpe (igual que en el bloque 1)
+        // Mostramos el botón de volver cuando entra a la categoría
+        const botonVolver = document.getElementById('btn-volver');
+        if (botonVolver) {
+            botonVolver.style.display = 'block'; // Lo hace visible
+        }
+        // Oculta todas las secciones de la página (incluido el menú principal)
+        // para dejar la pantalla limpia antes de cargar los productos
         document.querySelectorAll(".category-section").forEach(seccion => {
             seccion.classList.add("contentHidden");
         });
-
-        // 3. Volver a mostrar SOLO el menú principal
-        const menuPrincipal = document.getElementById('menu-principal');
-        if (menuPrincipal) {
-            menuPrincipal.classList.remove("contentHidden");
-        }
-
-        // 4. Limpiar todos los contenedores usando un array (chau a las líneas repetidas)
-        const elementosALimpiar = [
-            'contenedorInsumos', 
-            'contenedorRepuestos', 
-            'paginacionInsumos', 
-            'paginacionRepuestos'
-        ];
-        
-        elementosALimpiar.forEach(id => {
-            const elemento = document.getElementById(id);
-            if (elemento) elemento.innerHTML = ''; 
-        });
+        //Se dibujan los elementos de categoria 
+        let categoria = elemento.dataset.categoria;
+        renderizarSeccion(categoria);
     });
-}
 
+    // Btn volver dentro de repuestos e insumos, mostrar como estaba original
+    const botonVolver = document.getElementById('btn-volver');
+
+    if (botonVolver) {
+        botonVolver.style.display = 'none'; 
+
+        botonVolver.addEventListener('click', function() {
+            // 1. Ocultar el botón "Volver"
+            botonVolver.style.display = 'none';
+
+            // 2. Ocultar TODAS las secciones de un solo golpe (igual que en el bloque 1)
+            document.querySelectorAll(".category-section").forEach(seccion => {
+                seccion.classList.add("contentHidden");
+            });
+
+            // 3. Volver a mostrar SOLO el menú principal
+            const menuPrincipal = document.getElementById('menu-principal');
+            if (menuPrincipal) {
+                menuPrincipal.classList.remove("contentHidden");
+            }
+
+            // 4. Limpiar todos los contenedores usando un array (chau a las líneas repetidas)
+            const elementosALimpiar = [
+                'contenedorInsumos', 
+                'contenedorRepuestos', 
+                'paginacionInsumos', 
+                'paginacionRepuestos'
+            ];
+        
+            elementosALimpiar.forEach(id => {
+                const elemento = document.getElementById(id);
+                if (elemento) elemento.innerHTML = ''; 
+            });
+        });
+    }
 });

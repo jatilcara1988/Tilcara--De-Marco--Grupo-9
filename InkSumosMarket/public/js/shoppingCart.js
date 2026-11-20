@@ -118,10 +118,11 @@ const renderizarTotal = (carrito) => {
                             }
                             </span>
                         </h4>
-                        <button
-                            class="btn btn-success btn-lg"
-                            onclick="abrirModal()">
+                        <button class="btn btn-success btn-lg" onclick="abrirModal()">
                             Confirmar
+                        </button>
+                        <button class="btn btn-danger btn-lg" onclick="backToProduct()">
+                            Volver
                         </button>
                     </div>
                 </div>
@@ -138,7 +139,11 @@ const modal = document.getElementById("modal-confirmation");
 window.backToHome = () => {
     sessionStorage.clear();
     window.location.href = "index.html";
-}
+};
+
+window.backToProduct = () => {
+    window.location.href = 'products.html';
+};
 
 window.quitarDelCarrito = quitarDelCarrito;
 
@@ -155,7 +160,7 @@ window.abrirModal = () => {
 window.cancelPurchase = () => {
     modal.classList.add("modal-hidden");
     modal.classList.remove("modal-visible");
-}
+};
 
 window.confirmPurchase = async () => {
     const carrito = obtenerCarrito();
@@ -211,7 +216,7 @@ window.confirmPurchase = async () => {
         console.error(error);
         alert("No se pudo completar la compra. Intenta nuevamente.");
     }
-}
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
     const contenedor = document.querySelector("#container-shopping-cart");
@@ -233,17 +238,4 @@ document.addEventListener("DOMContentLoaded", async () => {
         guardarCarrito(carrito);
         renderizarCarrito(carrito);
     });
-
-/* Volever a la direccion de productos */
-const btnVolverProductos = document.getElementById('btn-volver2');
-
-if (btnVolverProductos) {
-    btnVolverProductos.addEventListener('click', function() {
-        
-        window.location.href = '/products.html';
-        
-    });
-}
-
-
 });

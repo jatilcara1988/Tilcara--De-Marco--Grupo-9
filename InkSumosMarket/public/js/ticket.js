@@ -26,13 +26,6 @@ window.backToHome = () => {
     window.location.href = "./index.html";
 };
 
-// window.goToProducts = () =>{
-    
-//     window.location.href = "/products.html"
-
-
-// };
-
 
 
 const cargarTicket = async () => {

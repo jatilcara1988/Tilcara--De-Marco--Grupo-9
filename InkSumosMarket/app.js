@@ -63,7 +63,7 @@ const shutdown = async (signal) => {
                         return reject(error)
                     }
                     resolve()
-                })
+                })/*  */
             })
             server = null
         }

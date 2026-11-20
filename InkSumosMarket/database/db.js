@@ -17,4 +17,4 @@ const sequelize = new Sequelize(
   }
 );
 
-module.exports = sequelize;
+module.exports = sequelize; // permite que se tenga acceso desde todo el proyecto

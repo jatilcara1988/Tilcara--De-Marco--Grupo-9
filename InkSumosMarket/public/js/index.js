@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    sessionStorage.clear();
+    sessionStorage.clear(); //Elmina culquier sesion anterior
     const btnContinue = document.getElementById("btnContinue");
     const btnLoginAdmin = document.getElementById("btnLoginAdmin");
     const inputName = document.getElementById("txtName");

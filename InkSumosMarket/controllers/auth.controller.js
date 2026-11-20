@@ -95,7 +95,9 @@ const authController = {
     }
 };
 
-const crearToken = (datos) => {
+//MANEJO DE TOKEN
+
+const crearToken = (datos) => {   
     const token = jwt.sign(
         {
             id: datos.id,

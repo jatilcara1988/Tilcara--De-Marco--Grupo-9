@@ -157,6 +157,9 @@ window.cancelPurchase = () => {
     modal.classList.remove("modal-visible");
 }
 
+
+//confirmar compra
+
 window.confirmPurchase = async () => {
     const carrito = obtenerCarrito();
     const clienteGuardado = obtenerClienteGuardado();
@@ -172,6 +175,13 @@ window.confirmPurchase = async () => {
         alert("Debes ingresar el nombre del cliente");
         return;
     }
+
+     if(nombreClienteInput.value === ""){
+
+        alert("Por favor, ingrese nombre para continuar")
+        return;
+     }
+
     if (nombreCliente) {
         sessionStorage.setItem("cliente", nombreCliente);
     }

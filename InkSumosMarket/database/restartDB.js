@@ -14,7 +14,7 @@ async function resetDatabase() {
             path.join(__dirname, "database.sql"),
             "utf8"
         );
-        await conexion.query(sql);
+        await conexion.query(sql); //se ejecuta el sql
         console.log("Base de datos recreada correctamente");
         await conexion.end();
     } catch (error) {

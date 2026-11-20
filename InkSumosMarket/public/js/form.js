@@ -1,5 +1,5 @@
 window.backToHome = () => {
-    //window.location.href = "/";
+    
     window.location.href = "/auth/logout";
 };
 

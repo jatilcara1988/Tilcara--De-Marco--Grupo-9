@@ -3,14 +3,16 @@ const inputs = document.querySelectorAll("input");
 const avisoError = document.querySelector(".alerta");
 const params = new URLSearchParams(window.location.search);
 
+//verifica la session 
 if (params.get("session") === "error") {
     alert("Debes iniciar sesión nuevamente.");
-    window.history.replaceState(
+    window.history.replaceState(  //borra el mensaje de error al 
         {},
         document.title,
         "/auth/login"
     );
 }
+
 
 btnAccesoRapido.addEventListener("click", () => {
     document.getElementById("email").value = "jdPrimero@test.com";

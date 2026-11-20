@@ -46,7 +46,7 @@ function renderizarSeccion(categoria) {
     if (!contenedor || !contenedorPag) return;
 
     // 1. FILTRAR: Tomar del array global solo los de la categoría correspondiente
-    // Nota: Asegúrate de que en tu base de datos el campo se llame exactamente "seguridad" o "productividad"
+    
     const productosFiltrados = arrayData.filter(p => {
         // Verificamos que el producto y su categoria_id existan
         if (p && p.categoryId !== undefined && p.categoryId !== null) {

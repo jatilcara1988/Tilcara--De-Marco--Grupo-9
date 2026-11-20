@@ -52,8 +52,10 @@
             </div>
             <!-- INSUMOS --> 
             <section class="category-section mb-5">
-                <h2 class="mb-4 text-info">Insumos</h2>
-                <div id="contenedorInsumos">
+                <h2 class="mb-4 text-info tab-header" data-contenedor="contenedorInsumos" style="cursor: pointer;">
+                    Insumos <span class="tab-indicador">▸</span>
+                </h2>
+                <div id="contenedorInsumos" class="d-none">
                     <% const insumosActivos= productos.filter(
                         producto => producto.categoryId === 1 && Number(producto.isActive) === 1);%>
                     <% insumosActivos.forEach(producto => { %>
@@ -78,11 +80,6 @@
                                             <button class="btn btn-warning btn-sm btn-editar" data-id="<%= producto.id %>" data-name="<%= producto.productName %>">
                                                 Editar
                                             </button>
-                                            <!--
-                                                <a class="editar" href="/admin/productos/editar/<%= producto.id %>">
-                                                    Editar
-                                                </a>
-                                            -->
                                             <button class="btn btn-danger btn-sm btn-eliminar" data-id="<%= producto.id %>" data-name="<%= producto.productName %>">
                                                 Eliminar
                                             </button>
@@ -96,8 +93,10 @@
             </section>
             <!-- Repuestos -->
             <section class="category-section mb-5">
-                <h2 class="mb-4 text-warning">Repuestos</h2>
-                <div id="contenedorProductividad">
+                <h2 class="mb-4 text-warning tab-header" data-contenedor="contenedorRepuestos" style="cursor: pointer;">
+                    Repuestos <span class="tab-indicador">▸</span>
+                </h2>
+                <div id="contenedorRepuestos" class="d-none">
                     <% const repuestosActivos= productos.filter(
                         producto => producto.categoryId === 2 && Number(producto.isActive) === 1);%>
                     <% repuestosActivos.forEach(producto => {%>
@@ -122,11 +121,6 @@
                                             <button class="btn btn-warning btn-sm btn-editar" data-id="<%= producto.id %>" data-name="<%= producto.productName %>">
                                                 Editar
                                             </button>
-                                            <!--
-                                                <a class="editar" href="/admin/productos/editar/<%= producto.id %>">
-                                                    Editar
-                                                </a>
-                                            -->
                                             <button class="btn btn-danger btn-sm btn-eliminar" data-id="<%= producto.id %>" data-name="<%= producto.productName %>">
                                                 Eliminar
                                             </button>
@@ -140,8 +134,10 @@
             </section>
             <!-- Insumos o Repuestos inactivos -->
             <section class="categoria-section mb-5">
-                <h2 class="mb-4 text-secondary">Productos dados de baja</h2>
-                <div id="contenedorInactivos">
+                <h2 class="mb-4 text-secondary tab-header" data-contenedor="contenedorInactivos" style="cursor: pointer;">
+                    Productos dados de baja <span class="tab-indicador">▸</span>
+                </h2>
+                <div id="contenedorInactivos" class="d-none">
                     <% const inactivos = productos.filter(producto => Number(producto.isActive) !== 1); %>
                     <% if (inactivos.length === 0) { %>
                         <p>No hay productos dados de baja.</p>

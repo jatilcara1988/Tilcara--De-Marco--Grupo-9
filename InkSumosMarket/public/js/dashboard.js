@@ -62,14 +62,20 @@ document.addEventListener("click", (e) => {
     }).catch((error) => {
         alert(error.message || "Error al reactivar el producto");
     });
+});
 
-    
-
-
-
-
-
-
-
-
+document.addEventListener("DOMContentLoaded", () => {
+    const tabHeaders = document.querySelectorAll(".tab-header");
+    tabHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+            const contenedorId = header.dataset.contenedor;
+            const contenedor = document.getElementById(contenedorId);
+            const indicador = header.querySelector(".tab-indicador");
+            if (!contenedor) return;
+            const isHidden = contenedor.classList.toggle("d-none");
+            if (indicador) {
+                indicador.textContent = isHidden ? "▸" : "▾";
+            }
+        });
+    });
 });

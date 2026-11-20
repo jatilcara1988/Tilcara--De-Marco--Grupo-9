@@ -58,9 +58,11 @@
                                 <button type="submit" class="btn btn-primary">
                                     Ingresar
                                 </button>
+                                <% if (typeof localTestMode !== "undefined" && localTestMode) { %>
                                 <button type="button" id="btnAccesoRapido" class="btn btn-outline-secondary">
                                     Acceso rápido
                                 </button>
+                                <% } %>
                             </div>
                         </form>
                     </div>
